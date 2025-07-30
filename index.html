@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Mas Que Burgers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="negocio">Mas Que Burgers</div>
+    <div class="acciones-header">
+      <button id="btn-reset-contador" title="Reiniciar numeración de pedidos (nuevo día)">Reset N°</button>
+      <button id="btn-cierre-dia" title="Ver cierre del día">Cierre Día</button>
+      <button id="btn-modo-oscuro" title="Alternar tema">Tema</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- PANEL MENÚ -->
+    <section id="panel-menu">
+      <div class="tabs">
+        <button class="tab-btn active" data-cat="hamburguesas">Hamburguesas</button>
+        <button class="tab-btn" data-cat="complementos">Complementos</button>
+        <button class="tab-btn" data-cat="bebidas">Bebidas</button>
+      </div>
+      <div id="contenedor-productos" class="productos-grid"></div>
+    </section>
+
+    <!-- PANEL CARRITO -->
+    <aside id="panel-carrito">
+      <h2>Pedido actual</h2>
+      
+      <!-- Mensaje de error -->
+      <div id="error-mensaje" class="error-mensaje"></div>
+      
+      <!-- Selector de tipo de entrega -->
+      <div class="tipo-entrega">
+        <button id="btn-retira" class="active">Retira en Local</button>
+        <button id="btn-envio">Envío a Domicilio</button>
+      </div>
+      
+      <!-- Campos de cliente -->
+      <div id="cliente-fields">
+        <label for="cliente-nombre">Nombre</label>
+        <input type="text" id="cliente-nombre" placeholder=" ">
+        <label for="cliente-telefono">Teléfono</label>
+        <input type="text" id="cliente-telefono" placeholder=" ">
+        <div id="direccion-field" style="display:none;">
+          <label for="cliente-direccion">Dirección</label>
+          <input type="text" id="cliente-direccion" placeholder=" ">
+        </div>
+        <div id="delivery-field" style="display:none;">
+          <label for="delivery-asignado">Delivery</label>
+          <select id="delivery-asignado">
+            <option value="">Seleccionar delivery</option>
+            <option value="Juan">Juan</option>
+            <option value="Leonel">Leonel</option>
+          </select>
+        </div>
+        <label for="metodo-pago">Método de Pago</label>
+        <select id="metodo-pago">
+          <option value="efectivo">Efectivo</option>
+          <option value="transferencia">Transferencia</option>
+          <option value="qr">QR</option>
+          <option value="debito">Débito</option>
+          <option value="credito">Crédito</option>
+        </select>
+        <label for="observaciones">Observaciones</label>
+        <textarea id="observaciones" placeholder="Ej: sin mayonesa, doble cheddar"></textarea>
+      </div>
+      
+      <!-- Carrito -->
+      <div id="carrito-items"></div>
+      <div id="carrito-total">Total: $0</div>
+      <button id="btn-confirmar" disabled>Confirmar pedido e imprimir</button>
+      
+      <!-- Listado de pedidos activos -->
+      <div id="lista-pedidos-activos">
+        <h3>Pedidos en Proceso</h3>
+        <div id="pedidos-container"></div>
+      </div>
+
+      <!-- Historial -->
+      <div id="historial">
+        <h3>Pedidos del día</h3>
+        <ul id="historial-lista"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Plantilla de ticket para impresión -->
+  <div id="ticket-impresion"></div>
+  
+  <!-- Plantilla de comanda para impresión -->
+  <div id="comanda-impresion"></div>
+
+  <!-- Cierre del día -->
+  <div id="cierre-dia-container">
+    <div id="cierre-dia">
+      <h2>Cierre del Día</h2>
+      <div id="cierre-contenido"></div>
+      <button id="btn-cerrar-cierre">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
